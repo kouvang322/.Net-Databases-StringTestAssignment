@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StringInterpolationTemplate\StringInterpolationTemplate.csproj" />
+    <ProjectReference Include="..\StringInterpolationTemplate\StringInterpolationTest.csproj" />
   </ItemGroup>
 
 </Project>

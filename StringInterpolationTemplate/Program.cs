@@ -2,23 +2,25 @@
 using Microsoft.Extensions.DependencyInjection;
 using StringInterpolationTemplate.Services;
 
-namespace StringInterpolationTemplate;
-
-public class Program
+namespace StringInterpolationTemplate
 {
-    private static void Main(string[] args)
+    public class Program
     {
-        try
+        private static void Main(string[] args)
         {
-            var startup = new Startup();
-            var serviceProvider = startup.ConfigureServices();
-            var service = serviceProvider.GetService<IMainService>();
+            try
+            {
+                var startup = new Startup();
+                var serviceProvider = startup.ConfigureServices();
+                var service = serviceProvider.GetService<IMainService>();
 
-            service?.Invoke();
-        }
-        catch (Exception e)
-        {
-            Console.Error.WriteLine(e);
+                service?.Invoke();
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e);
+            }
         }
     }
 }
+

@@ -2,79 +2,99 @@
 using Microsoft.Extensions.Logging;
 using StringInterpolationTemplate.Utils;
 
-namespace StringInterpolationTemplate.Services;
-
-public class StringInterpolationService : IStringInterpolationService
+namespace StringInterpolationTemplate.Services
 {
-    private readonly ISystemDate _date;
-    private readonly ILogger<IStringInterpolationService> _logger;
-
-    public StringInterpolationService(ISystemDate date, ILogger<IStringInterpolationService> logger)
+    public class StringInterpolationService : IStringInterpolationService
     {
-        _date = date;
-        _logger = logger;
-        _logger.Log(LogLevel.Information, "Executing the StringInterpolationService");
+        private readonly ISystemDate _date;
+        private readonly ILogger<IStringInterpolationService> _logger;
+
+        public StringInterpolationService(ISystemDate date, ILogger<IStringInterpolationService> logger)
+        {
+            _date = date;
+            _logger = logger;
+            _logger.Log(LogLevel.Information, "Executing the StringInterpolationService");
+        }
+
+        //1. January 22, 2019 (right aligned in a 40 character field)
+        public string Number01()
+        {
+            var date = _date.Now.ToString("MMMM dd, yyyy");
+            var answer = $"{date,40}";
+            Console.WriteLine(answer);
+
+            return answer;
+        }
+
+        public string Number02()
+        {
+            var date = _date.Now.ToString("yyyy.mm.dd");
+            Console.WriteLine(date);
+            return date;
+        }
+
+        public string Number03()
+        {
+            var date = $"Day {_date.Now.ToString("dd")} of {_date.Now.ToString("MMMM")}, {_date.Now.ToString("yyyy")}";
+            return date;
+        }
+
+        public string Number04()
+        {
+            var date = $"Year: {_date.Now.ToString("yyyy")}, Month: {_date.Now.ToString("MM")}, Day: {_date.Now.ToString("dd")}";
+            return date;
+        }
+
+        public string Number05()
+        {
+            var date = _date.Now.ToString("dddd");
+            var answer = $"{date,10}";
+            return answer;
+        }
+
+        public string Number06()
+        {
+            var date = _date.Now.ToString("hh:mm tt");
+            var date2 = _date.Now.ToString("dddd");
+            var answer = $"{date,10}" + $"{date2,10}";
+            return answer;
+        }
+
+        public string Number07()
+        {
+            var date = $"h:{_date.Now.ToString("hh")}, m:{_date.Now.ToString("mm")}, s:{_date.Now.ToString("ss")}";
+            return date;
+        }
+
+        public string Number08()
+        {
+            var date = _date.Now.ToString("yyyy.MM.dd.hh.mm.ss");
+            return date;
+        }
+
+        public string Number09()
+        {
+            var pi = Math.PI;
+            var answer = $"{pi:C}";
+            return answer;
+        }
+
+        public string Number10()
+        {
+            var pi = Math.PI;
+            var answer = $"{pi,10:n3}";
+            return answer;
+        }
+
+        public string Number11()
+        {
+            var num = 2;
+            var squareRootOf2 = Convert.ToInt32(Math.Sqrt(num));
+
+            var hexadecimalOfSquareRootOf2 = $"{squareRootOf2:X}";
+                
+            return hexadecimalOfSquareRootOf2;
+        }
+
     }
-
-    //1. January 22, 2019 (right aligned in a 40 character field)
-    public string Number01()
-    {
-        var date = _date.Now.ToString("MMMM dd, yyyy");
-        var answer = $"{date,40}";
-        Console.WriteLine(answer);
-
-        return answer;
-    }
-
-    public string Number02()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number03()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number04()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number05()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number06()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number07()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number08()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number09()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number10()
-    {
-        throw new NotImplementedException();
-    }
-
-    public string Number11()
-    {
-        throw new NotImplementedException();
-    }
-
-    //2.2019.01.22
 }
