@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 using StringInterpolationTemplate.Utils;
+System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
 
 namespace StringInterpolationTemplate.Services
 {
     public class StringInterpolationService : IStringInterpolationService
     {
+
         private readonly ISystemDate _date;
         private readonly ILogger<IStringInterpolationService> _logger;
 
