@@ -1,12 +1,13 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 using StringInterpolationTemplate.Utils;
-System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+
 
 namespace StringInterpolationTemplate.Services
 {
     public class StringInterpolationService : IStringInterpolationService
     {
+       
 
         private readonly ISystemDate _date;
         private readonly ILogger<IStringInterpolationService> _logger;
@@ -16,6 +17,7 @@ namespace StringInterpolationTemplate.Services
             _date = date;
             _logger = logger;
             _logger.Log(LogLevel.Information, "Executing the StringInterpolationService");
+            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
         }
 
         //1. January 22, 2019 (right aligned in a 40 character field)
